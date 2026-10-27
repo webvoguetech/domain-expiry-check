@@ -36,7 +36,7 @@ jobs:
           fail-days: 7    # fail the job inside 7 days
 ```
 
-A failed scheduled run emails the repository owner, so the alert reaches you with nothing else to set up. The run summary shows a table of every domain:
+When a scheduled run fails, GitHub notifies whoever created the workflow, by email and in their notifications, so the alert arrives with nothing else to set up. The run summary shows a table of every domain:
 
 | | Domain | Stage | Expires | Days left | Registrar |
 |---|---|---|---|---|---|
