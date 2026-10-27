@@ -1,0 +1,36 @@
+name: Self-test
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '17 6 * * 1'
+  workflow_dispatch:
+
+jobs:
+  action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run this action against well-known domains
+        id: check
+        uses: ./
+        with:
+          domains: |
+            github.com
+            example.org
+            bbc.co.uk
+          warn-days: 30
+          fail-days: 7
+      - name: Outputs
+        run: echo "soonest ${{ steps.check.outputs.soonest-domain }} in ${{ steps.check.outputs.soonest-days }} days"
+
+  cli:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node index.js github.com example.org --warn-days 30
+      - run: node index.js --help

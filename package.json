@@ -1,0 +1,15 @@
+{
+  "name": "domain-expiry-check",
+  "version": "1.0.0",
+  "description": "Check domain expiry dates live from the registry over RDAP. CLI and GitHub Action; fails CI before a domain expires. No API key.",
+  "type": "module",
+  "bin": { "domain-expiry-check": "index.js" },
+  "main": "lib/rdap-core.js",
+  "exports": { ".": "./lib/rdap-core.js" },
+  "files": ["index.js", "lib/", "action.yml", "README.md", "LICENSE"],
+  "engines": { "node": ">=20" },
+  "keywords": ["domain", "expiry", "expiration", "rdap", "whois", "github-action", "monitoring", "dns", "domain-age", "registrar"],
+  "homepage": "https://dropperch.com/?utm_source=npm&utm_medium=package&utm_campaign=homepage",
+  "license": "MIT",
+  "author": "Web Vogue Technologies <support@dropperch.com>"
+}

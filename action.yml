@@ -1,0 +1,28 @@
+name: 'Domain Expiry Check'
+description: 'Warn or fail before a domain expires. Reads expiry, registrar and stage live from the registry over RDAP. No API key.'
+author: 'DropPerch'
+branding:
+  icon: 'clock'
+  color: 'green'
+inputs:
+  domains:
+    description: 'Domains to check, separated by spaces, commas or new lines.'
+    required: true
+  warn-days:
+    description: 'Annotate a warning when a domain expires within this many days.'
+    required: false
+    default: '30'
+  fail-days:
+    description: 'Fail the step when a domain expires within this many days. A domain past expiry, in redemption, pending delete, on hold or unregistered always fails. Set -1 to never fail on days alone.'
+    required: false
+    default: '7'
+outputs:
+  failed:
+    description: 'Comma-separated domains that failed the check.'
+  soonest-domain:
+    description: 'The domain that expires first.'
+  soonest-days:
+    description: 'Days until that domain expires.'
+runs:
+  using: 'node24'
+  main: 'index.js'
